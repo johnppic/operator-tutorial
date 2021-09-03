@@ -18,6 +18,17 @@ goal
 
 The goal of this tutorial is to explore operators by observing a real world operator in action. By the end of this tutorial you should be able to understand all the steps that take place when a PrometheusRule gets created.
 
+crds
+----
+
+Custom resources are extensions of the Kubernetes API.
+
+Primary Link:
+* [Overview](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/)
+
+Seconday Link:
+* [Defining a schema](https://kubernetes.io/blog/2019/06/20/crd-structural-schema/)
+
 kubernetes operators
 --------------------
 
@@ -30,16 +41,6 @@ Links:
 * [Overview](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/)
 * [Pros](https://thenewstack.io/why-kubernetes-operators-will-unleash-your-developers-by-reducing-complexity/)
 * [Cons](https://thenewstack.io/kubernetes-when-to-use-and-when-to-avoid-the-operator-pattern/)
-
-crds
-----
-
-Custom resources are extensions of the Kubernetes API.
-
-Links:
-
-* [Overview](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/)
-* [Defining a schema](https://kubernetes.io/blog/2019/06/20/crd-structural-schema/)
 
 prometheus
 ----------
