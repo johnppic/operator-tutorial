@@ -134,8 +134,8 @@ Links:
 * [OLM](https://docs.okd.io/latest/operators/understanding_olm/olm-understanding-olm.html)
 
 
-operator-sdk
-------------
+operator-sdk (reference only)
+-----------------------------
 
 The Operator SDK provides the tools to build, test, and package Operators. Initially, the SDK facilitates the marriage of an application’s business logic (for example, how to scale, upgrade, or backup) with the Kubernetes API to execute those operations. Over time, the SDK can allow engineers to make applications smarter and have the user experience of cloud services. Leading practices and code patterns that are shared across Operators are included in the SDK to help prevent reinventing the wheel.
 
