@@ -155,14 +155,9 @@ The Operator SDK is a framework that uses the controller-runtime library to make
 PrometheusRule answer
 ---------------------
 
-Edit your namespace
+Edit your namespaceto add the label 'openshift.io/cluster-monitoring: "true"'
 
-    oc edit ns my-namespace
-
-Add label
-
-    labels:
-      openshift.io/cluster-monitoring: "true"
+    oc label namespace <my_project> openshift.io/cluster-monitoring=true
 
 Check the prometheus-operator deployment again to see if your namespace is in `--namespaces`
 Check prometheus to see that your rule showed up
