@@ -3,6 +3,7 @@ kubernetes operator tutorial
 
 Topics
 
+* Customer Resource Definitions
 * Kubernetes Operators
 * Prometheus
 * Alertmanager
