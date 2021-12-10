@@ -132,7 +132,7 @@ The Operator Lifecycle Manager (OLM) helps users install, update, and manage the
 
 Links:
 
-* [OLM](https://docs.okd.io/latest/operators/understanding_olm/olm-understanding-olm.html)
+* [OLM](https://docs.okd.io/latest/operators/understanding/olm/olm-understanding-olm.html)
 
 
 operator-sdk (reference only)
