@@ -101,30 +101,6 @@ Links:
 
 * [Overview](https://github.com/openshift/cluster-monitoring-operator/blob/master/README.md)
 
-
-create a PrometheusRule
------------------------
-
-1. Rename the alert to a unique name (e.g. your name) so that you will be able to find it in Prometheus when searching. `alert: Hello{name}`
-
-2. Search for an interesting metric in prometheus to create an alert on. Use the template contained in this project. Try to find a more interesting expr than just `vector(0)`.
-
-3. Apply the PrometheusRule. Look for it in the Prometheus alert tab. The rule will not appear. You will need to investigate why this is happening, as you can clearly see other PrometheusRules are being loaded.
-
-Hints:
-
-* Review the prometheus operator deployment in openshift-monitoring and review the --namespaces argument to the container. [namespaces cmd line arg](https://github.com/prometheus-operator/prometheus-operator/blob/master/cmd/operator/main.go#L176)
-    
-    * If you attempt to change the values here directly cluster monitoring operator will set them back automatically during a reconcile step
-
-* Review the cluster-monitoring-operator for how it generates the namespaces value.
-    
-    * [Namespace Selector](https://github.com/prometheus-operator/prometheus-operator/blob/master/cmd/operator/main.go#L191)
-    * [Implementation](https://github.com/openshift/cluster-monitoring-operator/blob/922578d7d8a33f39b43b577e74c469b4374e90bd/pkg/manifests/manifests.go#L1878)
-
-* Skip to the end for the final answer
-
-
 operator-lifecycle-manager
 --------------------------
 
@@ -152,16 +128,19 @@ The Operator SDK is a framework that uses the controller-runtime library to make
 * [operator-sdk samples](https://github.com/operator-framework/operator-sdk-samples)
 
 
-PrometheusRule answer
----------------------
+create a PrometheusRule
+-----------------------
 
-Edit your namespaceto add the label 'openshift.io/cluster-monitoring: "true"'
+* Make sure the prometheus service account has cluster reader priviledges for the cluster in order to discover the pods running in each namespace:
+
+    oc adm policy add-cluster-role-to-user cluster-reader -z prometheus-k8s -n openshift-monitoring
+
+1. Edit your namespace to add the label 'openshift.io/cluster-monitoring: "true"'
 
     oc label namespace <my_project> openshift.io/cluster-monitoring=true
 
-Check the prometheus-operator deployment again to see if your namespace is in `--namespaces`
-Check prometheus to see that your rule showed up
+2. Rename the alert to a unique name (e.g. your name) so that you will be able to find it in Prometheus when searching. `alert: Hello{name}`
 
-Make sure the prometheus service account has cluster reader priviledges for the cluster in order to discover the pods running in each namespace:
+2. Search for an interesting metric in prometheus to create an alert on. Use the template contained in this project. Try to find a more interesting expr than just `vector(0)`.
 
-    oc adm policy add-cluster-role-to-user cluster-reader -z prometheus-k8s -n openshift-monitoring
+3. Apply the PrometheusRule. Look for it in the Prometheus alert tab. 
